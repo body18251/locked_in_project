@@ -1,0 +1,152 @@
+<?php
+include("includes/header2.php");
+?>
+<?php
+session_start(); 
+
+if(isset($_SESSION['user'])) { 
+    ?>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'])) {
+    // قم بمعالجة الطلب الذي يتم إرساله من النموذج هنا
+    // يمكنك إدراج الكود الخاص بك هنا
+}
+
+// استعلم عن الأسئلة من قاعدة البيانات
+$sql = "SELECT `id`, `track`, `book_id`, `name` FROM `courses` WHERE 1";
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "quiczwaq_locked";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("فشل الاتصال بقاعدة البيانات: " . $conn->connect_error);
+}
+
+$result = $conn->query($sql);
+?>
+
+<body>
+
+<div class="sk-three-bounce">
+    <div class="sk-child sk-bounce1"></div>
+    <div class="sk-child sk-bounce2"></div>
+    <div class="sk-child sk-bounce3"></div>
+</div>
+</div>
+
+<div id="main-wrapper">
+
+<?php include("includes/includes.php"); ?>
+
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row page-titles mx-0">
+            <div class="col-sm-6 p-md-0">
+                <div class="welcome-text">
+                    <h4>All Courses</h4>
+                    
+                </div>
+            </div>
+            <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Courses</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0);">Courses Groups</a></li>
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                <div class="card-header">
+                                <h4 class="card-title">All Courses Groups</h4>
+                                <?php
+                                $userType = $_SESSION['user']['type'];
+                                if ($userType == 'Super') {
+                                    echo '<a href="new_group.php" class="btn btn-primary">+ Add new</a>';
+                                }
+                                ?>
+                            </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-responsive-md">
+                                <thead>
+                                    <tr>
+                                        <th style="width:80px;">#</th>
+                                        <th>Track</th>
+                                        <th>Book ID</th>
+                                        <th>Name</th>
+                                        <?php
+                                                $userType = $_SESSION['user']['type'];
+                                                if ($userType == 'Super') {
+                                                    echo '<th>Action</th>';
+                                                }
+                                                ?>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    if ($result->num_rows > 0) {
+                                        $row_number = 1;
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo "<tr>";
+                                            echo "<td><strong>" . $row_number . "</strong></td>";
+                                            echo "<td>" . $row['track'] . "</td>";
+                                            echo "<td>" . $row['book_id'] . "</td>";
+                                            echo "<td>" . $row['name'] . "</td>";
+                                            $userType = $_SESSION['user']['type'];
+                                                    if ($userType == 'Super') {
+                                                        echo '
+                                                        <td>
+                                                            <div class="d-flex">
+                                                                <a href="courses_edit.php?id=' . $row['id'] . '" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-pencil"></i></a>
+                                                                <a href="courses_delete.php?id=' . $row['id'] . '" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                                            </div>
+                                                        </td>
+                                                    ';
+                                                    }
+                                                    echo "</tr>";
+                                                    $row_number++;
+                                                }
+                                            } else {
+                                                echo "<tr><td colspan=\"4\">لا توجد بيانات متاحة</td></tr>";
+                                            }
+                                            ?>
+                                           
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<!-- Required vendors -->
+<script src="vendor/global/global.min.js"></script>
+<script src="vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<!-- Datatable -->
+<script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="js/plugins-init/datatables.init.js"></script>
+<!-- Svganimation scripts -->
+<script src="vendor/svganimation/vivus.min.js"></script>
+<script src="vendor/svganimation/svg.animation.js"></script>
+<script src="js/custom.min.js"></script>
+<script src="js/dlabnav-init.js"></script>
+<script src="js/demo.js"></script>
+
+</body>
+</html>
+<?php
+    exit();
+}
+header("Location: login.php");
+exit();
+?>

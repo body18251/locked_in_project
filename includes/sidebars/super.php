@@ -116,6 +116,60 @@
                         </ul>
                     </li>
 
+
+
+
+
+
+
+
+                    <li class="nav-label">Courses</li>
+                    <li><a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+                    <i class="fa-solid fa-object-group"></i>
+                                                            							<span class="nav-text">Course Group</span>
+						</a> 
+                     <ul aria-expanded="false">
+                            <li><a href="course_groups.php">All Groups</a></li>
+                            <li><a href="new_group.php">Add Group</a></li>
+</ul>
+                           
+                            </li> 
+                            
+                            <li><a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+                            <i class="fa-solid fa-clapperboard"></i>                                                        							<span class="nav-text">Lectures</span>
+						</a> 
+                     <ul aria-expanded="false">
+                            <li><a href="Lectures.php">All Lectures</a></li>
+                            <li><a href="add_lecture.php">Add Lectures</a></li>
+</ul>
+                           
+                            </li> 
+                            
+
+
+                            <li><a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+
+                            <i class="fa-solid fa-video"></i>                                                       						
+                            	<span class="nav-text">Parts</span>
+						</a> 
+                     <ul aria-expanded="false">
+                            <li><a href="parts.php">All Lectures</a></li>
+                            <li><a href="add_lecture.php">Add Lectures</a></li>
+</ul>
+                           
+                            </li> 
+
+                          
+                    </li> 
+                            
+                            <li><a class="ai-icon" href="rating_answer.php?page=1" aria-expanded="false">
+                            <i class="fa-regular fa-star"></i>
+                                                        							<span class="nav-text">Rating Results</span>
+						</a>
+                    </li>
+
+
+
                  <li class="nav-label">Rating</li>
                     <li><a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
                     <i class="fa-solid fa-group-arrows-rotate"></i>
@@ -157,42 +211,7 @@
 
 
 
-                    <li class="nav-label">Courses</li>
-                    <li><a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
-                    <i class="fa-solid fa-group-arrows-rotate"></i>
-                                        							<span class="nav-text"></span>
-						</a> 
-                     <ul aria-expanded="false">
-                            <li><a href="rating_groups.php">All Groups</a></li>
-                            <li><a href="new_group_rating.php">Add Group</a></li>
-</ul>
-                           
-                            </li> 
-                            
-                            <li><a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
-                            <i class="fa-solid fa-question"></i>
-                                                        							<span class="nav-text">MsQ</span>
-						</a> 
-                     <ul aria-expanded="false">
-                            <li><a href="msq.php">All MSQ</a></li>
-                            <li><a href="new_msq.php">Add MSQ</a></li>
-</ul>
-                           
-                            </li> 
-                            
-                            <li><a class="ai-icon" href="rating-setting.php?id=1" aria-expanded="false">
-                            <i class="fa-solid fa-bars"></i>
-                            							<span class="nav-text">Rating setting</span>
-						</a>
-                    </li>
-                    </li> 
-                            
-                            <li><a class="ai-icon" href="rating_answer.php?page=1" aria-expanded="false">
-                            <i class="fa-regular fa-star"></i>
-                                                        							<span class="nav-text">Rating Results</span>
-						</a>
-                    </li>
-
+                  
 
 
 
