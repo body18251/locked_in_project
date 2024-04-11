@@ -14,37 +14,57 @@ if(isset($_SESSION['user'])) {
         die("فشل الاتصال بقاعدة البيانات: " . $conn->connect_error);
     }
 
-    // الاستعلام عن المحاضرات وأسماء الكورسات
-    $sql_lectures = "SELECT l.id, c.name AS course_name, l.lecture_name, l.duration_minutes 
-                    FROM lectures l 
-                    INNER JOIN courses c ON l.course_id = c.id";
-    $result_lectures = $conn->query($sql_lectures);
+    // الاستعلام عن الأجزاء مع اسم المحاضرة من جدول الكورسات
+    $sql_parts = "SELECT p.id, c.lecture_name AS course_lecture, p.lecture_name, p.video_link, p.lecturer_name, p.lecture_details, p.exam_id, p.id_lecture, p.time
+                  FROM parts p
+                  LEFT JOIN lectures c ON p.id_lecture = c.id";
+    $result_parts = $conn->query($sql_parts);
 ?>
 
+
 <body>
+   <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
 
-<div class="sk-three-bounce">
-    <div class="sk-child sk-bounce1"></div>
-    <div class="sk-child sk-bounce2"></div>
-    <div class="sk-child sk-bounce3"></div>
-</div>
-</div>
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
 
-<div id="main-wrapper">
-    <?php include("includes/includes.php"); ?>
+    
 
+ 
+
+		<?php
+include("includes/includes.php");
+
+?>
     <div class="content-body">
         <div class="container-fluid">
             <div class="row page-titles mx-0">
                 <div class="col-sm-6 p-md-0">
                     <div class="welcome-text">
-                        <h4>All Lectures</h4>
+                        <h4>All Parts</h4>
+                        
+
+
                     </div>
                 </div>
                 <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0);">Lectures</a></li>
-                        <li class="breadcrumb-item active"><a href="javascript:void(0);">All Lectures</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">Parts</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0);">All Parts</a></li>
                     </ol>
                 </div>
             </div>
@@ -52,13 +72,13 @@ if(isset($_SESSION['user'])) {
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">All Lectures</h4>
+                            <h4 class="card-title">All Parts</h4>
                             <?php
-                            $userType = $_SESSION['user']['type'];
-                            if ($userType == 'Super') {
-                                echo '<a href="add_lecture.php" class="btn btn-primary">+ Add new</a>';
-                            }
-                            ?>
+                                $userType = $_SESSION['user']['type'];
+                                if ($userType == 'Super') {
+                                    echo '<a href="add_part.php" class="btn btn-primary">+ Add new</a>';
+                                }
+                                ?>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -66,43 +86,46 @@ if(isset($_SESSION['user'])) {
                                     <thead>
                                         <tr>
                                             <th style="width:80px;">#</th>
-                                            <th>Course Name</th>
-                                            <th>Lecture Name</th>
-                                            <th>Duration (minutes)</th>
-                                            <?php
-                                            $userType = $_SESSION['user']['type'];
-                                            if ($userType == 'Super') {
-                                                echo '<th>Action</th>';
-                                            }
-                                            ?>
+                                            <th>Course Lecture</th>
+                                            <th>Part Name</th>
+                                            <th>Video Link</th>
+                                            <th>Lecturer Name</th>
+                                            <th>Lecture Details</th>
+                                            <th>Exam ID</th>
+                                            <th>Time</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        if ($result_lectures->num_rows > 0) {
-                                            $row_number_lectures = 1;
-                                            while ($row_lectures = $result_lectures->fetch_assoc()) {
+                                        if ($result_parts->num_rows > 0) {
+                                            $row_number_parts = 1;
+                                            while ($row_parts = $result_parts->fetch_assoc()) {
                                                 echo "<tr>";
-                                                echo "<td><strong>" . $row_number_lectures . "</strong></td>";
-                                                echo "<td>" . $row_lectures['course_name'] . "</td>"; // عرض اسم الكورس بدلاً من الـ ID
-                                                echo "<td>" . $row_lectures['lecture_name'] . "</td>";
-                                                echo "<td>" . $row_lectures['duration_minutes'] . "</td>";
+                                                echo "<td><strong>" . $row_number_parts . "</strong></td>";
+                                                echo "<td>" . $row_parts['course_lecture'] . "</td>";
+                                                echo "<td>" . $row_parts['lecture_name'] . "</td>";
+                                                echo "<td>" . $row_parts['video_link'] . "</td>";
+                                                echo "<td>" . $row_parts['lecturer_name'] . "</td>";
+                                                echo "<td>" . $row_parts['lecture_details'] . "</td>";
+                                                echo "<td>" . $row_parts['exam_id'] . "</td>";
+                                                echo "<td>" . $row_parts['time'] . "</td>";
                                                 $userType = $_SESSION['user']['type'];
                                                 if ($userType == 'Super') {
                                                     echo '
                                                     <td>
                                                         <div class="d-flex">
-                                                            <a href="lecture_edit.php?id=' . $row_lectures['id'] . '" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-pencil"></i></a>
-                                                            <a href="lecture_delete.php?id=' . $row_lectures['id'] . '" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                                            <a href="part_edit.php?id=' . $row_parts['id'] . '" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-pencil"></i></a>
+                                                            <a href="part_delete.php?id=' . $row_parts['id'] . '" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
                                                         </div>
                                                     </td>
                                                     ';
                                                 }
                                                 echo "</tr>";
-                                                $row_number_lectures++;
+                                                $row_number_parts++;
                                             }
                                         } else {
-                                            echo "<tr><td colspan=\"4\">لا توجد بيانات متاحة</td></tr>";
+                                            echo "<tr><td colspan=\"10\">No data available</td></tr>";
                                         }
                                         ?>
                                     </tbody>

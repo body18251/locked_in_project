@@ -153,20 +153,14 @@
                             	<span class="nav-text">Parts</span>
 						</a> 
                      <ul aria-expanded="false">
-                            <li><a href="parts.php">All Lectures</a></li>
-                            <li><a href="add_lecture.php">Add Lectures</a></li>
+                            <li><a href="parts.php">All Parts</a></li>
+                            <li><a href="add_part.php">Add Parts</a></li>
 </ul>
                            
                             </li> 
 
                           
-                    </li> 
-                            
-                            <li><a class="ai-icon" href="rating_answer.php?page=1" aria-expanded="false">
-                            <i class="fa-regular fa-star"></i>
-                                                        							<span class="nav-text">Rating Results</span>
-						</a>
-                    </li>
+                 
 
 
 
