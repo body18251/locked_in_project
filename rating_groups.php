@@ -11,8 +11,8 @@ if(isset($_SESSION['user'])) {
         $userId = $_POST['userId'];
         
         $servername = "localhost";
-        $username = "root";
-        $password = "";
+        $username = "quiczwaq_locked";
+        $password = "Dsa123!@#";
         $dbname = "quiczwaq_locked";
     
         $conn = new mysqli($servername, $username, $password, $dbname);
@@ -80,8 +80,8 @@ if(isset($_SESSION['user'])) {
                                         <div class="table-responsive">
                                             <?php
                                             $servername = "localhost"; 
-                                            $username = "root"; 
-                                            $password = "";    
+                                            $username = "quiczwaq_locked"; 
+                                            $password = "Dsa123!@#";    
                                             $dbname = "quiczwaq_locked"; 
     
                                             $conn = new mysqli($servername, $username, $password, $dbname);

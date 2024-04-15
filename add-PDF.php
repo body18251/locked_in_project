@@ -23,8 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES['pdf_file'])) {
         if (move_uploaded_file($file_path, $upload_directory . $random_file_name)) {
             // اتصل بقاعدة البيانات وأدخل بيانات الملف الجديد
             $servername = "localhost";
-            $username = "root";
-            $password = "";
+            $username = "quiczwaq_locked";
+            $password = "Dsa123!@#";
             $dbname = "quiczwaq_locked";
 
             $conn = new mysqli($servername, $username, $password, $dbname);
@@ -116,8 +116,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES['pdf_file'])) {
                                                     <option value="">Select Course</option>
                                                     <?php
                                                        $servername = "localhost";
-                                                       $username = "root";
-                                                       $password = "";
+                                                       $username = "quiczwaq_locked";
+                                                       $password = "Dsa123!@#";
                                                        $dbname = "quiczwaq_locked";
                                                    
                                                        $conn = new mysqli($servername, $username, $password, $dbname);

@@ -8,8 +8,8 @@ if(isset($_SESSION['user_id'])) {
 include("includes/header.php");
 
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "quiczwaq_locked";
+$password = "Dsa123!@#";
 $dbname = "quiczwaq_locked";
 
 $errorMessage = ""; 

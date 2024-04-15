@@ -16,8 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'])) {
 $sql = "SELECT msq.id, msq.group_id, msq.question, msq.type,rating_groups.name AS group_name FROM msq INNER JOIN rating_groups ON msq.group_id = rating_groups.id";
 
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "quiczwaq_locked";
+$password = "Dsa123!@#";
 $dbname = "quiczwaq_locked";
 
 $conn = new mysqli($servername, $username, $password, $dbname);

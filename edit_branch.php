@@ -4,8 +4,8 @@ session_start();
 
 if(isset($_SESSION['user'])) { 
     $servername = "localhost"; 
-    $username = "root"; 
-    $password = "";    
+    $username = "quiczwaq_locked"; 
+    $password = "Dsa123!@#";    
     $dbname = "quiczwaq_locked"; 
 
     $conn = new mysqli($servername, $username, $password, $dbname);

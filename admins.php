@@ -15,8 +15,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'])) {
     
     // اتصل بقاعدة البيانات وقم بحذف المستخدم
     $servername = "localhost";
-    $username = "root";
-    $password = "";
+    $username = "quiczwaq_locked";
+    $password = "Dsa123!@#";
     $dbname = "quiczwaq_locked";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -116,8 +116,8 @@ include("includes/includes.php");
                                         <div class="table-responsive">
                                             <?php
                                             $servername = "localhost"; 
-                                            $username = "root"; 
-                                            $password = "";    
+                                            $username = "quiczwaq_locked"; 
+                                            $password = "Dsa123!@#";    
                                             $dbname = "quiczwaq_locked"; 
 
                                             $conn = new mysqli($servername, $username, $password, $dbname);

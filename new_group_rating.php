@@ -14,8 +14,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // اتصل بقاعدة البيانات وأدخل بيانات جروب التقييم الجديد
     $servername = "localhost";
-    $username = "root";
-    $password = "";
+    $username = "quiczwaq_locked";
+    $password = "Dsa123!@#";
     $dbname = "quiczwaq_locked";
 
     $conn = new mysqli($servername, $username, $password, $dbname);

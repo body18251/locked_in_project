@@ -16,8 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'])) {
 $sql = "SELECT `id`, `track`, `book_id`, `name` FROM `courses` WHERE 1";
 
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "quiczwaq_locked";
+$password = "Dsa123!@#";
 $dbname = "quiczwaq_locked";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
